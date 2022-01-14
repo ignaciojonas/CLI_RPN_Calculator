@@ -9,7 +9,7 @@ module RPNCalculator
       @stack = []
     end
 
-    def eval(expression)
+    def evaluate(expression)
       expression.split(' ').map do |token|
         case token
         when /\d+/
@@ -32,7 +32,7 @@ module RPNCalculator
       op1, op2 = @stack.pop(2)
       raise 'Cannot divide by zero' if op2.zero? && operator == '/'
 
-      @stack.push(binding.eval("#{op1}#{operator}#{op2}"))
+      @stack.push(eval("#{op1}#{operator}#{op2}"))
     end
   end
 end
