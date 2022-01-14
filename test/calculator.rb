@@ -24,4 +24,10 @@ RSpec.describe RPNCalculator::Calculator do
     calculator.eval('3 4 -')
     expect(calculator.result).to eq(-1)
   end
+
+  it 'should multiply 2 values' do
+    calculator = RPNCalculator::Calculator.new
+    calculator.eval('3 4 *')
+    expect(calculator.result).to eq(12)
+  end
 end
