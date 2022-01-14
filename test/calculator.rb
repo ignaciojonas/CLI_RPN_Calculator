@@ -41,4 +41,9 @@ RSpec.describe RPNCalculator::Calculator do
     calculator = RPNCalculator::Calculator.new
     expect { calculator.eval('10 0 /') }.to raise_error 'Cannot divide by zero'
   end
+
+  it 'should raise an error when try to operate with less than 2 values in the stack' do
+    calculator = RPNCalculator::Calculator.new
+    expect { calculator.eval('10 +') }.to raise_error 'You need 2 values in the stack to calculate'
+  end
 end

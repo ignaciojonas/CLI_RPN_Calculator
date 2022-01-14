@@ -33,6 +33,8 @@ module RPNCalculator
     end
 
     def adds
+      raise 'You need 2 values in the stack to calculate' if @stack.size < 2
+
       op1, op2 = @stack.pop(2)
       @stack.push(op1 + op2)
     end
