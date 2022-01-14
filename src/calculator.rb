@@ -49,6 +49,8 @@ module RPNCalculator
 
     def divide
       op1, op2 = @stack.pop(2)
+      raise 'Cannot divide by zero' if op2.zero?
+
       @stack.push(op1 / op2)
     end
   end

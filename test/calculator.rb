@@ -36,4 +36,9 @@ RSpec.describe RPNCalculator::Calculator do
     calculator.eval('10 2 /')
     expect(calculator.result).to eq(5)
   end
+
+  it 'should raise an error when try to divide by zero' do
+    calculator = RPNCalculator::Calculator.new
+    expect { calculator.eval('10 0 /') }.to raise_error 'Cannot divide by zero'
+  end
 end
