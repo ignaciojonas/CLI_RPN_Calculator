@@ -16,6 +16,8 @@ module RPNCalculator
           @stack.push(token.to_f)
         when /\+/
           adds
+        when /-/
+          substract
         else
           raise 'Unrecognized Token'
         end
@@ -29,6 +31,11 @@ module RPNCalculator
     def adds
       op1, op2 = @stack.pop(2)
       @stack.push(op1 + op2)
+    end
+
+    def substract
+      op1, op2 = @stack.pop(2)
+      @stack.push(op1 - op2)
     end
   end
 end

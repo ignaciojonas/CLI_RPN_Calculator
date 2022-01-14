@@ -18,4 +18,10 @@ RSpec.describe RPNCalculator::Calculator do
     calculator.eval('3 4 +')
     expect(calculator.result).to eq 7
   end
+
+  it 'should substract 2 values' do
+    calculator = RPNCalculator::Calculator.new
+    calculator.eval('3 4 -')
+    expect(calculator.result).to eq(-1)
+  end
 end
