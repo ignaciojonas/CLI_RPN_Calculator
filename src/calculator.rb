@@ -20,6 +20,8 @@ module RPNCalculator
           substract
         when /\*/
           multiply
+        when %r{/}
+          divide
         else
           raise 'Unrecognized Token'
         end
@@ -43,6 +45,11 @@ module RPNCalculator
     def multiply
       op1, op2 = @stack.pop(2)
       @stack.push(op1 * op2)
+    end
+
+    def divide
+      op1, op2 = @stack.pop(2)
+      @stack.push(op1 / op2)
     end
   end
 end
