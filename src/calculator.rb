@@ -32,7 +32,7 @@ module RPNCalculator
       op1, op2 = @stack.pop(2)
       raise 'Cannot divide by zero' if op2.zero? && operator == '/'
 
-      @stack.push(eval("#{op1}#{operator}#{op2}"))
+      @stack.push(binding.eval("#{op1} #{operator} #{op2}"))
     end
   end
 end

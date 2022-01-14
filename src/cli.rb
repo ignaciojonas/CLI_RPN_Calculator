@@ -5,20 +5,15 @@ module RPNCalculator
   class CLI
     def initialize
       @calculator = RPNCalculator::Calculator.new
+      puts 'Welcome to this amazing Reverse Polish Notation Calculator'
+      print '> '
       run
     end
 
     def run
-      puts 'Welcome to this amazing Reverse Polish Notation Calculator'
-      print '> '
-
       loop do
         input = gets
-
-        if input.nil? || input.chomp == 'q'
-          puts 'Bye Bye'
-          exit
-        end
+        exit_app(input)
 
         begin
           @calculator.evaluate(input.chomp)
@@ -26,9 +21,20 @@ module RPNCalculator
           puts e.message
         end
 
-        puts @calculator.result
-        print '> '
+        print_results
       end
+    end
+
+    def print_results
+      puts @calculator.result
+      print '> '
+    end
+
+    def exit_app(input)
+      return unless input.nil? || input.chomp == 'q'
+
+      puts 'Bye Bye'
+      exit
     end
   end
 end
