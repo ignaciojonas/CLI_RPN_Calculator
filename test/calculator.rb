@@ -12,4 +12,10 @@ RSpec.describe RPNCalculator::Calculator do
     calculator = RPNCalculator::Calculator.new
     expect { calculator.eval('H') }.to raise_error 'Unrecognized Token'
   end
+
+  it 'should add 2 values' do
+    calculator = RPNCalculator::Calculator.new
+    calculator.eval('3 4 +')
+    expect(calculator.result).to eq 7
+  end
 end

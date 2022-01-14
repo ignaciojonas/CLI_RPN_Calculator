@@ -14,6 +14,8 @@ module RPNCalculator
         case token
         when /\d+/
           @stack.push(token.to_f)
+        when /\+/
+          adds
         else
           raise 'Unrecognized Token'
         end
@@ -22,6 +24,11 @@ module RPNCalculator
 
     def result
       @stack.last
+    end
+
+    def adds
+      op1, op2 = @stack.pop(2)
+      @stack.push(op1 + op2)
     end
   end
 end
